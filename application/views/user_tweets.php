@@ -40,7 +40,7 @@
               <tr>
                 <td>
                  <?php 
-                    echo "<b>".$tweets[$i+2]." ".$tweets[$i+1]."</b><br>";
+                    echo "<b>".$tweets[$i+2]."</b><br>";
                     echo $tweets[$i];
                  ?>
                 </td>

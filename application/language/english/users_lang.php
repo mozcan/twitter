@@ -2,7 +2,7 @@
 
 // Sign_in
 $lang['title'] 				= "TWITTER-LOGIN";
-$lang['twitter_login']		= "Twitter Login";
+$lang['twitter_login']		= "Login";
 $lang['e_mail'] 			= "E-Mail Address";
 $lang['password']			= "Password";
 $lang['Sign_in']			= "Sign in";

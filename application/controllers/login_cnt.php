@@ -38,7 +38,7 @@ class login_cnt extends CI_Controller
 	   
 	   if($this->auth->try_login($data))
 	   {
-	   	  redirect("header");
+	   	  redirect("home_cnt");
 	   }
 	   else
 	   {
