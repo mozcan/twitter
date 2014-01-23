@@ -6,8 +6,8 @@ class login_cnt extends CI_Controller
    public function __construct()
    {
       parent::__construct();
-	  $this->load->database();
 	  
+	  $this->load->database();
 	  // Load Model
 	  $this->load->model("sign_model");
 
@@ -31,22 +31,22 @@ class login_cnt extends CI_Controller
    
    public function check()
    {
-   	   $data=array(
-        'user_mail' => $this->input->post("mail"),
-        'password'  => md5($this->input->post("pass"))
-   	   	);
+   	$data=array(
+            'user_mail' => $this->input->post("mail"),
+            'password'  => md5($this->input->post("pass"))
+   	);
 	   
 	   if($this->auth->try_login($data))
 	   {
-	   	  redirect("home_cnt");
+	      redirect("home_cnt");
 	   }
 	   else
 	   {
-	   	 $this->session->set_flashdata('err_message', "Mail or Password is incorrect. Please confirm your mail and password.");
-		redirect("login_cnt","refresh");
+              $this->session->set_flashdata('err_message', "Mail or Password is incorrect. Please confirm your mail and password.");
+              redirect("login_cnt","refresh");
 	   }
 
- 		//$this->load->view("user_tweets",$value);
+            //$this->load->view("user_tweets",$value);
    }
    
    public function sign_up()  

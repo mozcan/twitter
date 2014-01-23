@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Migration_tweets extends CI_Migration {
+class Migration_followers_followed extends CI_Migration {
 
 	public function up()
 	{
@@ -12,35 +12,26 @@ class Migration_tweets extends CI_Migration {
 				'unsigned' => TRUE,
 				'auto_increment' => TRUE
 			),
-			'user_id' => array(
+			'follow_up_id' => array(
 				'type' => 'INT',
 				'constraint' => '11',
 			),
-			'tweets' => array(
-				'type' => 'VARCHAR',
-				'constraint' => '140',
+			'followed_id' => array(
+				'type' => 'INT',
+				'constraint' => '11',
 			),
-			'added_datetime' => array(
-				'type' => 'DATETIME',
-				'null' => TRUE
-			),
-			'update_datetime' => array(
-				'type' => 'DATETIME',
-				'null' => TRUE
-			),
-			'delete_datetime' => array(
+			'date_time' => array(
 				'type' => 'DATETIME',
 				'null' => TRUE
 			),
 		));
 		
 		$this->dbforge->add_key('id', TRUE);
-		$this->dbforge->add_key('user_id');
-		$this->dbforge->create_table('tweets');
+		$this->dbforge->create_table('followers_followed');
 	}
 
 	public function down()
 	{
-		$this->dbforge->drop_table('tweets');
+		$this->dbforge->drop_table('followers_followed');
 	}
 }

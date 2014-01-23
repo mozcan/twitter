@@ -3,7 +3,7 @@
 <title><?php echo $this->lang->line('title')?></title>
 
 <link href="<?php echo base_url("css/bootstrap.min.css");?>" rel="stylesheet">
-<link href="<?php echo base_url("css/deneme.css");?>" rel="stylesheet">
+<link href="<?php echo base_url("css/info.css");?>" rel="stylesheet">
 
 <script src="<?php echo base_url("js/jquery-1.9.1.min.js");?>"></script>
 <script src="<?php echo base_url("js/bootstrap.min.js");?>"></script>
@@ -36,7 +36,7 @@
                 <div class="well">
                   <ul class="nav nav-tabs">
                     <li class="active"><a href="#login" data-toggle="tab"><?php echo $this->lang->line('twitter_login')?></a></li>
-                    <li><a href="#create" data-toggle="tab">Create Account</a></li>
+                    <li><a href="#create" data-toggle="tab">Kayit Ol</a></li>
                   </ul>
                   <div id="myTabContent" class="tab-content">
                     <div class="tab-pane active in" id="login">
@@ -49,7 +49,7 @@
                             <!-- Email -->
                             <label class="control-label"><b><?php echo $this->lang->line('e_mail')?>:</b></label>
                             <div class="controls">
-                              <input type="text" name="mail" title="E-Mail Address" placeholder="E-Mail Address" class="input-xlarge"/>
+                              <input type="text" name="mail" title="E-Mail Address" placeholder="E-Mail Adresi" class="input-xlarge" required />
                             </div>
                           </div>
      
@@ -57,13 +57,13 @@
                             <!-- Password-->
                             <label class="control-label"><b><?php echo $this->lang->line('password')?>:</b></label>
                             <div class="controls">
-                              <input type="password" name="pass" title="Password"  placeholder="Password" class="input-xlarge" />
+                              <input type="password" name="pass" title="Password"  placeholder="Sifre" class="input-xlarge" required />
                             </div>
                           </div>
                           <div class="control-group">
                             <!-- Button -->
                             <div class="controls">
-                              <button type='submit' class="btn btn-success"><?php echo $this->lang->line('Sign_up')?></button>
+                              <button type='submit' class="btn btn-success"><?php echo $this->lang->line('Sign_in')?></button>
                             </div>
                           </div>
                         </fieldset>
@@ -71,29 +71,29 @@
                     </div>
                     <div class="tab-pane fade" id="create">
                    		 <div id="legend">
-                            <legend class="">Create Account</legend>
+                            <legend class="">Kayit Ol</legend>
                          </div>
                       <?php echo form_open('login_cnt/sign_up',array('class' => 'well', 'id' => 'tab')); ?>
                       <div class="control-group">
                         <label class="control-label"><b><?php echo $this->lang->line('namesurname')?>:</b></label>
                         <div class="controls">
-                       		<input type="text" name="namesurname" placeholder="<?php echo $this->lang->line('namesurname'); ?>"/>
+                       		<input type="text" name="namesurname" placeholder="<?php echo $this->lang->line('namesurname'); ?>" required />
                        	</div>
                       </div>
                       <div class="control-group">
                         <label class="control-label"><b><?php echo $this->lang->line('e_mail_address')?>:</b></label>
                         <div class="controls">
-                       		<input type="text" name="mail" title="E-Mail Address"  placeholder="E-Mail Address"/>
+                       		<input type="text" name="mail" title="E-Mail Address"  placeholder="E-Mail Adresi" required />
                        	</div>
                       </div>
                       <div class="control-group">
                         <label class="control-label"><b><?php echo $this->lang->line('pass')?>:</b></label>
                         <div class="controls">
-                        	<input type="password" name="pass" title="Password"  placeholder="Password"/>
+                        	<input type="password" name="pass" title="Password"  placeholder="Sifre" required />
                         </div>
                       </div>
                         <div>
-                          <button class="btn btn-primary">Create Account</button>
+                          <button class="btn btn-primary"><?php echo $this->lang->line('Sign_up')?></button>
                         </div>
                       </form>
                     </div>

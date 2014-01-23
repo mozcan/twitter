@@ -11,25 +11,25 @@ class tweets_model extends CI_Model
 
 	public function details($user_id)
 	{
-       $this->db->select('*');
-       $query_tweets=$this->db->get_where('tweets',array('user_id' => $user_id['user_id']));
+            $this->db->select('*');
+            $query_tweets=$this->db->get_where('tweets',array('user_id' => $user_id));
 
-       $tweets_counts=$query_tweets->num_rows();
+            $tweets_counts=$query_tweets->num_rows();
 
-       $this->db->select('*');
-       $query_followers=$this->db->get_where('followers',array('user_id' => $user_id['user_id']));
+            $this->db->select('*');
+            $query_followers=$this->db->get_where('followers_followed',array('followed_id' => $user_id));
 
-       $followers_count=$query_followers->num_rows();
+            $followers_count=$query_followers->num_rows();
 
-       $this->db->select('*');
-       $query_followed=$this->db->get_where('followed',array('user_id' => $user_id['user_id']));
+            $this->db->select('*');
+            $query_followed=$this->db->get_where('followers_followed',array('follow_up_id' => $user_id));
 
-       $followed_count=$query_followed->num_rows();
+            $followed_count=$query_followed->num_rows();
 
 
-       $data=array('tweets_counts' => $tweets_counts,'followers_count' => $followers_count,'followed_count' => $followed_count);
+            $data=array('tweets_counts' => $tweets_counts,'followers_count' => $followers_count,'followed_count' => $followed_count);
 
-       return $data;
+            return $data;
 	}
 
 	public function insert_new_tweet($new_tweet)
@@ -51,7 +51,7 @@ class tweets_model extends CI_Model
 		$t_id=array();
 		$this->db->select('t.id,t.user_id');
 		$this->db->from('tweets t');
-		$this->db->join('followed f','f.followed_id=t.user_id and f.user_id='.$user_id['user_id'].' or t.user_id='.$user_id['user_id'].'');
+		$this->db->join('followed f','f.followed_id=t.user_id and f.user_id='.$user_id.' or t.user_id='.$user_id.'');
 		$this->db->order_by('t.id','desc');
 
 		$this->db->distinct();

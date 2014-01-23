@@ -22,7 +22,7 @@
             </tr>
             <?php echo form_open('home_cnt/new_tweet',array('class' => 'well','name' => 'myform')); ?>
             <tr>
-              <td colspan='3'><textarea rows="2" placeholder='New Tweet' name='new_tweet'></textarea></td>
+              <td colspan='3'><textarea rows="2" placeholder='Yeni Tweet Olustur' name='new_tweet'></textarea></td>
             </tr>
              <tr>
               <td colspan='3'><button type='submit' class='btn btn-primary' id='firstbtn'>Tweet</button></td>

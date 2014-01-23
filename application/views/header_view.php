@@ -1,6 +1,6 @@
 <html lang="en">
 <head>
-<title>User Page</title>
+<title>Twitter</title>
 <link href="<?php echo base_url("css/bootstrap.min.css");?>" rel="stylesheet">
 
     <script src="<?php echo base_url("js/jquery-1.9.1.min.js");?>"></script>
@@ -14,7 +14,7 @@
               <p class="brand"><?php echo $username; ?></p>
               <ul class="nav">
                 <li>
-                  <a href="<?php echo site_url("home_cnt") ?>">Home</a>
+                  <a href="<?php echo site_url("home_cnt") ?>">Anasayfa</a>
                 </li>
                 <li>
                   <a href="<?php echo site_url("profil_cnt") ?>">Profil</a>
@@ -22,20 +22,20 @@
                  <li class="dropdown">
 
                 <a  data-toggle="dropdown" href="#">
-                  Message
+                  Mesaj
                   <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
 
-                  <li><a href="message_cnt/new_message" class="btn">New Message</a></li>
-                  <li><a href="#" class="btn">Incoming Box</a></li>
-                  <li><a href="#" class="btn">Archiv</a></li>
-                  <li><a href="#" class="btn">Outgoing Box</a></li>
+                  <li><a href="message_cnt/new_message" class="btn">Yeni Mesaj</a></li>
+                  <li><a href="#" class="btn">Gelen Kutusu</a></li>
+                  <li><a href="#" class="btn">Arsiv</a></li>
+                  <li><a href="#" class="btn">Gelen Kutusu</a></li>
                 </ul>
 
                 </li>
                 <li>
-                  <a href="<?php echo site_url("header/logout")?>">Logout</a> 
+                  <a href="<?php echo site_url("header/logout")?>">Cikis</a> 
                 </li> 
                 <li>
                   <form action='search' method='post'>

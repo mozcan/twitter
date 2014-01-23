@@ -16,28 +16,17 @@ class home_cnt extends CI_Controller
 
 		$this->load->model('tweets_model');
 		$this->load->library('form_validation');
-
-		//load language
-		/*
-		$this->lang->load('dashboard');
-		$this->lang->load('dashboard_nav');
-
-		$this->load->helper('language');
-		*/
+                
+                // load helper
+		$this->load->helper(array('language', 'form'));
 	}
 
 	public function index()
 	{
-		$user_id=array(
-			'user_id' => $this->session->userdata('user_id')
-
-			);
-
 		$data=array(
 			'username' => $this->session->userdata('username'),
-			'lastname' => $this->session->userdata('lastname'),
-			'tweets_details' => $this->tweets_model->details($user_id),
-			'tweets' => $this->tweets_model->tweets($user_id)
+			'tweets_details' => $this->tweets_model->details($this->session->userdata('user_id')),
+			'tweets' => $this->tweets_model->tweets($this->session->userdata('user_id'))
 			);
 
 		$this->load->view('user_tweets',$data);
