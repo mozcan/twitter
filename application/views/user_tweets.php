@@ -32,22 +32,26 @@
         </div>
         </div>
 
-        <div class="span3">
+        <div class="span4">
           <div class="well sidebar-nav">
            <table class="table table-hover">
-            <?php for ($i=0;$i<count($tweets);$i=$i+3){
-              ?>
-              <tr>
-                <td>
-                 <?php 
-                    echo "<b>".$tweets[$i+2]."</b><br>";
-                    echo $tweets[$i];
-                 ?>
-                </td>
-              </tr>
-              <?php
-            }
-            ?>
+           <?php
+                foreach($tweets as $tweet):
+           ?>
+                <tr>
+                        <?php if($tweet->photo===''): ?>
+                        <td rowspan="2"><img src='<?php echo base_url('img/profile.jpg'); ?>' /></td>
+                        <?php else: ?>
+                        <td rowspan="2"><img src='<?php echo base_url('img/'.$tweet->photo); ?>' /></td>
+                        <?php endif; ?>
+                    <td><b><?php echo $tweet->namesurname; ?></b>&nbsp;&nbsp;<?php echo $tweet->added_datetime; ?></td>
+                </tr>
+                <tr>
+                    <td><?php echo $tweet->tweets; ?></td>
+                </tr>
+           <?php
+                endforeach;
+           ?>
            </table>  
         </div>
         </div>
