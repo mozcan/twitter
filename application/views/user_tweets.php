@@ -1,8 +1,26 @@
+<?php $this->load->view("header_view")	?>
 <html>
-
+    <head>
+        <script>
+          function newTweet()
+          {
+              var character_count= 140 - $('#new_tweet').val().length;
+              
+              $('#costLabel').text(character_count);
+              
+              if(character_count < 0 || character_count == 140)
+              {
+                  $("input[type=submit]").attr("disabled", "disabled");
+              }
+              else
+              {
+                   $("input[type=submit]").removeAttr("disabled");
+              }
+              
+          }
+        </script>
+    </head>
   <body>
-  	<?php $this->load->view("header_view")	?>
-     
       <div class="row-fluid">
         <div class="span3">
         	<div class="well sidebar-nav">
@@ -22,10 +40,12 @@
             </tr>
             <?php echo form_open('home_cnt/new_tweet',array('class' => 'well','name' => 'myform')); ?>
             <tr>
-              <td colspan='3'><textarea rows="2" placeholder='Yeni Tweet Olustur' name='new_tweet'></textarea></td>
+              <td colspan='3'><textarea class="form-control" onkeyup="newTweet()" rows="2" id="new_tweet" placeholder='Yeni Tweet Olustur' name='new_tweet'></textarea></td>
             </tr>
              <tr>
-              <td colspan='3'><button type='submit' class='btn btn-primary' id='firstbtn'>Tweet</button></td>
+                 <td colspan='3'><input type='submit' disabled='disabled' class='btn btn-primary' id='firstbtn' value='Tweet' />
+                <label id="costLabel" name="costLabel"> 140 </label>
+                </td>
             </tr>
           </form>
         	 </table>  
@@ -40,11 +60,11 @@
            ?>
                 <tr>
                         <?php if($tweet->photo===''): ?>
-                        <td rowspan="2"><img src='<?php echo base_url('img/profile.jpg'); ?>' /></td>
+                        <td rowspan="2"><img style="width:100%;height:100%;" src='<?php echo base_url('img/profile.jpg'); ?>' /></td>
                         <?php else: ?>
                         <td rowspan="2"><img src='<?php echo base_url('img/'.$tweet->photo); ?>' /></td>
                         <?php endif; ?>
-                    <td><b><?php echo $tweet->namesurname; ?></b>&nbsp;&nbsp;<?php echo $tweet->added_datetime; ?></td>
+                    <td><b><?php echo $tweet->namesurname; ?></b>&nbsp;&nbsp;<?php echo $tweet->day_number; ?>&nbsp;<?php echo $tweet->day_name; ?></td>
                 </tr>
                 <tr>
                     <td><?php echo $tweet->tweets; ?></td>

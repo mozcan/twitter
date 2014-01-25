@@ -59,13 +59,33 @@ class tweets_model extends CI_Model
                 $row[]=$values->followed_id;
             }
             
-            
+            /*
             $this->db->select('t.tweets,u.namesurname,u.photo,t.added_datetime');
             $this->db->from('tweets t');
             $this->db->join('users u','u.id=t.user_id');
             $this->db->where_in('t.user_id',$row);
-            $this->db->order_by('t.added_datetime','asc');
+            $this->db->order_by('t.added_datetime','DESC');
             $query_tweets=$this->db->get();
+            */
+            $query_tweets=$this->db->query("
+            select t.tweets,u.namesurname,u.photo,(SELECT DAY(t.added_datetime)) as day_number , 
+            (SELECT CASE MONTHNAME(t.added_datetime) 
+            WHEN 'January' THEN 'Ocak'
+            WHEN 'February' THEN 'Şubat'
+            WHEN 'March' THEN 'Mart'
+            WHEN 'April' THEN 'Nisan'
+            WHEN 'May' THEN 'Mayıs'
+            WHEN 'June' THEN 'Haziran'
+            WHEN 'July' THEN 'Temmuz'
+            WHEN 'August' THEN 'Ağustos'
+            WHEN 'September' THEN 'Eylül'
+            WHEN 'October' THEN 'Ekim'
+            WHEN 'November' THEN 'Kasım'
+            WHEN 'December' THEN 'Aralık'
+             END) as day_name
+            from tweets t
+            join users u ON t.user_id=u.id and t.user_id IN (".implode(',',$row).") 
+            ORDER BY t.added_datetime DESC");
             
             return $query_tweets->result();
 	}
