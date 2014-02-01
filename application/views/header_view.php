@@ -19,24 +19,31 @@
                 <li>
                   <a href="<?php echo site_url("profil_cnt") ?>">Profil</a>
                 </li>
+                  
                  <li class="dropdown">
-
-                <a  data-toggle="dropdown" href="#">
+                <a data-toggle="dropdown" href="#">
                   Mesaj
                   <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
-
                   <li><a href="message_cnt/new_message" class="btn">Yeni Mesaj</a></li>
                   <li><a href="#" class="btn">Gelen Kutusu</a></li>
                   <li><a href="#" class="btn">Arsiv</a></li>
                   <li><a href="#" class="btn">Gelen Kutusu</a></li>
                 </ul>
+                </li>
+                  
+                <li class="dropdown">
+                <a data-toggle="dropdown" href="#">
+                    <i class="icon-large icon-cog"></i>
+                  <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href="#" class="btn">Ayarlar</a></li>
+                  <li><a href="<?php echo site_url("header/logout")?>" class="btn">Cikis</a></li>
+                </ul>
 
                 </li>
-                <li>
-                  <a href="<?php echo site_url("header/logout")?>">Cikis</a> 
-                </li> 
                 <li>
                   <form action='search' method='post'>
                  <input type="text" class="input-medium search-query" name='search' id='search'>

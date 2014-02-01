@@ -17,13 +17,6 @@ class follow_info extends CI_Controller
 		$this->load->model('search_model');
 		$this->load->library('form_validation');
 
-		//load language
-		/*
-		$this->lang->load('dashboard');
-		$this->lang->load('dashboard_nav');
-
-		$this->load->helper('language');
-		*/
 	}
 
 

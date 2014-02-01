@@ -26,7 +26,8 @@ class home_cnt extends CI_Controller
 		$data=array(
 			'username' => $this->session->userdata('username'),
 			'tweets_details' => $this->tweets_model->details($this->session->userdata('user_id')),
-			'tweets' => $this->tweets_model->tweets($this->session->userdata('user_id'))
+			'tweets' => $this->tweets_model->tweets($this->session->userdata('user_id')),
+                        'user_photo' => $this->tweets_model->get_photo($this->session->userdata('user_id'))
 			);
 
 		$this->load->view('user_tweets',$data);
@@ -35,16 +36,11 @@ class home_cnt extends CI_Controller
 
 	public function new_tweet()
 	{
-		/*
-		if($this->input->post('new_tweet')==null)
-		{
-
-		}
-		*/
-
 		$data=array('new_tweet' => $this->input->post('new_tweet'));
-		if($this->tweets_model->insert_new_tweet($data))
-			redirect('home_cnt');
+                
+		if($this->tweets_model->insert_new_tweet($data)):
+                    redirect('home_cnt');
+                endif;
 	}
 
 }
