@@ -14,3 +14,13 @@
 {
 	background-color: #6fa3c4;
 }
+
+.deneme:hover span
+{
+    display: none;
+}
+
+.deneme:hover:before
+{
+    content:"Takibi Birak";
+}

@@ -1,6 +1,6 @@
 <?php
 
-class tweets_model extends CI_Model
+class Tweets_model extends CI_Model
 {
 	public function __construct()
 	{
@@ -12,7 +12,7 @@ class tweets_model extends CI_Model
 	public function details($user_id)
 	{
             $this->db->select('id');
-            $query_tweets=$this->db->get_where('tweets',array('user_id' => $user_id));
+            $query_tweets=$this->db->get_where('tweets',array('user_id' => $user_id, 'delete_datetime' =>  null));
 
             $tweets_counts=$query_tweets->num_rows();
 
@@ -63,7 +63,7 @@ class tweets_model extends CI_Model
             select t.tweets,u.namesurname,u.photo,(SELECT DAY(t.added_datetime)) as day_number , 
             (SELECT CASE MONTHNAME(t.added_datetime) 
             WHEN 'January' THEN 'Ocak'
-            WHEN 'February' THEN 'Şubat'
+            WHEN 'February' THEN 'Subat'
             WHEN 'March' THEN 'Mart'
             WHEN 'April' THEN 'Nisan'
             WHEN 'May' THEN 'Mayıs'
@@ -76,7 +76,8 @@ class tweets_model extends CI_Model
             WHEN 'December' THEN 'Aralık'
              END) as day_name
             from tweets t
-            join users u ON t.user_id=u.id and t.user_id IN (".implode(',',$row).") 
+            join users u ON t.user_id=u.id and t.user_id IN (".implode(',',$row).") AND 
+            t.added_datetime is not null and t.delete_datetime is null
             ORDER BY t.added_datetime DESC");
             
             return $query_tweets->result();
@@ -85,10 +86,10 @@ class tweets_model extends CI_Model
         public function my_tweets($user_id)
         {
             $query_tweets=$this->db->query("
-            select t.tweets,u.namesurname,u.photo,(SELECT DAY(t.added_datetime)) as day_number , 
+            select t.tweets,t.id,u.namesurname,u.photo,(SELECT DAY(t.added_datetime)) as day_number , 
             (SELECT CASE MONTHNAME(t.added_datetime) 
             WHEN 'January' THEN 'Ocak'
-            WHEN 'February' THEN 'Şubat'
+            WHEN 'February' THEN 'Subat'
             WHEN 'March' THEN 'Mart'
             WHEN 'April' THEN 'Nisan'
             WHEN 'May' THEN 'Mayıs'
@@ -101,7 +102,8 @@ class tweets_model extends CI_Model
             WHEN 'December' THEN 'Aralık'
              END) as day_name
             from tweets t
-            join users u ON t.user_id=u.id and t.user_id='".$user_id."' 
+            join users u ON t.user_id=u.id and t.user_id='".$user_id."' AND 
+            t.added_datetime is not null and t.delete_datetime is null
             ORDER BY t.added_datetime DESC");
             
             return $query_tweets->result();
@@ -114,6 +116,17 @@ class tweets_model extends CI_Model
             $row=$query->result();
             
             return $row[0]->photo;
+        }
+        
+        public function delete_tweet($id)
+        {
+            $data = array(
+               'added_datetime' => null,
+               'delete_datetime' => date('Y-m-d H:i:s')
+            );
+
+            $this->db->where('id', $id);
+            $this->db->update('tweets', $data); 
         }
 }
 

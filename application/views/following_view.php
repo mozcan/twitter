@@ -41,8 +41,15 @@
                     foreach($list as $lists):
                 ?>
                         <tr>
-                            <td><?php echo $lists->namesurname; ?></td>
-                            <td> <a href='<?php echo site_url('follow_info/unfollow/'.$lists->user_id.'/'.$user_id); ?>' class='btn btn-info'>Takibi Birak</a></td>
+                            <td>
+                                <?php if($lists->photo===''): ?>
+                                <td><center><img style="height:100%;" src='<?php echo base_url('img/profile.jpg'); ?>' /></td>
+                                <?php else: ?>
+                                <td><center><img src='<?php echo base_url('img/'.$tweet->photo); ?>' /></td>
+                                <?php endif; ?>
+                            </td>
+                            <td><b><?php echo $lists->namesurname; ?></td>
+                            <td><a href='<?php echo site_url('follow_info/unfollow/'.$lists->user_id.'/'.$user_id); ?>' class='btn btn-info deneme'><span>Takip Ediliyor</span></a></td>
                         </tr>
                 <?php
                     endforeach;

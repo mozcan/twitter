@@ -1,9 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-/**
- * Dashboard Controller
- */
-class header extends CI_Controller
+class Header extends CI_Controller
 {
 	public function __construct()
 	{
@@ -12,16 +9,8 @@ class header extends CI_Controller
 		//$this->load->model("sign_model");
 
 		if (! $this->auth->is_logged()) {
-			redirect('login_cnt');
+			redirect('login');
 		}
-
-		//load language
-		/*
-		$this->lang->load('dashboard');
-		$this->lang->load('dashboard_nav');
-
-		$this->load->helper('language');
-		*/
 	}
 
 	public function index()
@@ -34,7 +23,7 @@ class header extends CI_Controller
 	{
 		$this->auth->logout();
 
-		redirect("login_cnt");
+		redirect("login");
 	}
 
 
@@ -47,9 +36,5 @@ class header extends CI_Controller
 		);
 
 		$this->load->view("user_tweets",$data);
-	}
-
-	
+	}	
 }
-/* End of file dashboard.php */
-/* Location: ./application/controllers/dashboard.php */

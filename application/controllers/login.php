@@ -1,8 +1,7 @@
 <?php
 
-class login_cnt extends CI_Controller
+class Login extends CI_Controller
 {
-   
    public function __construct()
    {
       parent::__construct();
@@ -38,15 +37,14 @@ class login_cnt extends CI_Controller
 	   
 	   if($this->auth->try_login($data))
 	   {
-	      redirect("home_cnt");
+	      redirect("home");
 	   }
 	   else
 	   {
               $this->session->set_flashdata('err_message', "Mail or Password is incorrect. Please confirm your mail and password.");
-              redirect("login_cnt","refresh");
+              redirect("login","refresh");
 	   }
 
-            //$this->load->view("user_tweets",$value);
    }
    
    public function sign_up()  
@@ -56,23 +54,23 @@ class login_cnt extends CI_Controller
 	  
 	  if ($this->form_validation->run() == TRUE)
 		{
-			$data=array(
-			  'user_mail' => $this->input->post('mail'),
-			  'password' => md5($this->input->post('pass')),
-			  'namesurname' => $this->input->post('namesurname'),
-			  'added_datetime' => date('Y-m-d H:i:s')
-			);
+                    $data=array(
+                      'user_mail' => $this->input->post('mail'),
+                      'password' => md5($this->input->post('pass')),
+                      'namesurname' => $this->input->post('namesurname'),
+                      'added_datetime' => date('Y-m-d H:i:s')
+                    );
 
-			if($this->sign_model->sign_up($data))
-			{
-				$this->session->set_flashdata('succ_message', "Sign Up Has been Successfully.");
-				 redirect('login_cnt');
-			}
+                    if($this->sign_model->sign_up($data))
+                    {
+                            $this->session->set_flashdata('succ_message', "Sign Up Has been Successfully.");
+                             redirect('login');
+                    }
 			  
 		}
 		else
 		{
-			die("Giris Yasak");
+                    die("Giris Yasak");
 		}
    }
    

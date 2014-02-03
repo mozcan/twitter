@@ -1,9 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-/**
- * Dashboard Controller
- */
-class follow_info extends CI_Controller
+class Follow_info extends CI_Controller
 {
 	public function __construct()
 	{
@@ -11,7 +8,7 @@ class follow_info extends CI_Controller
 		$this->load->library('auth');
 
 		if (! $this->auth->is_logged()) {
-			redirect('login_cnt');
+			redirect('login');
 		}
 
 		$this->load->model('search_model');
@@ -132,12 +129,4 @@ class follow_info extends CI_Controller
 		$this->load->view("followed_view",$followed_list);
 
 	}
-
-/*
-	public function followers()
-	{
-
-	}
-	*/
-
 }

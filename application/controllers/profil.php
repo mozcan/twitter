@@ -1,9 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-/**
- * Dashboard Controller
- */
-class home_cnt extends CI_Controller
+class Profil extends CI_Controller
 {
 	public function __construct()
 	{
@@ -11,7 +8,7 @@ class home_cnt extends CI_Controller
 		$this->load->library('auth');
 
 		if (! $this->auth->is_logged()) {
-			redirect('login_cnt');
+			redirect('login');
 		}
 
 		$this->load->model('tweets_model');
@@ -26,11 +23,11 @@ class home_cnt extends CI_Controller
 		$data=array(
 			'username' => $this->session->userdata('username'),
 			'tweets_details' => $this->tweets_model->details($this->session->userdata('user_id')),
-			'tweets' => $this->tweets_model->tweets($this->session->userdata('user_id')),
+			'tweets' => $this->tweets_model->my_tweets($this->session->userdata('user_id')),
                         'user_photo' => $this->tweets_model->get_photo($this->session->userdata('user_id'))
 			);
 
-		$this->load->view('user_tweets',$data);
+		$this->load->view('profil_tweets',$data);
 	}
 
 
@@ -39,10 +36,15 @@ class home_cnt extends CI_Controller
 		$data=array('new_tweet' => $this->input->post('new_tweet'));
                 
 		if($this->tweets_model->insert_new_tweet($data)):
-                    redirect('home_cnt');
+                    redirect('profil');
                 endif;
 	}
+        
+        public function delete_tweet()
+        {            
+            if($this->tweets_model->delete_tweet($this->input->post('id'))):
+                    return true;
+            endif;
+        }
 
 }
-/* End of file dashboard.php */
-/* Location: ./application/controllers/dashboard.php */

@@ -2,10 +2,11 @@
 <head>
 <title>Twitter</title>
 <link href="<?php echo base_url("css/bootstrap.min.css");?>" rel="stylesheet">
+<link href="<?php echo base_url("css/info.css");?>" rel="stylesheet">
 
     <script src="<?php echo base_url("js/jquery-1.9.1.min.js");?>"></script>
     <script src="<?php echo base_url("js/bootstrap.min.js");?>"></script>
-
+    <script src="<?php echo base_url("js/jquery.confirm.min.js");?>"></script>
 
 </head>
 <body>
