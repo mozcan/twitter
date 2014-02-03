@@ -2,7 +2,7 @@
 
 class Auth
 {
-	private $CI;
+    private $CI;
     private $data;
 	public function __construct()
 	{
@@ -29,12 +29,12 @@ class Auth
     
     public function is_logged()
     {
-		  $this->data = $this->get_user($this->CI->session->userdata('user_id')); 
-	      if ($this->data === FALSE) {
-	        return false;
-	      } else {
-	        return true;
-	      }
+          $this->data = $this->get_user($this->CI->session->userdata('user_id')); 
+          if ($this->data === FALSE) {
+            return false;
+          } else {
+            return true;
+          }
     }
     /**
     * Log Out

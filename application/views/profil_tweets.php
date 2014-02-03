@@ -31,7 +31,7 @@
                              type: "POST",
                              data: str,
                              cache: false,
-                             url: '<?php echo site_url('profil_cnt/delete_tweet'); ?>',
+                             url: '<?php echo site_url('profil/delete_tweet'); ?>',
                              success:function()
                              {
                                  location.reload();
@@ -62,7 +62,7 @@
                     <td colspan="3"><b><center><?php echo $username; ?></b></td>
         	</tr>
         	<tr>
-              <td><a class="btn" href="<?php echo site_url("profil_cnt")?>">Tweets</a></td>
+              <td><a class="btn" href="<?php echo site_url("profil")?>">Tweets</a></td>
               <td><a class="btn" href="<?php echo site_url("following")?>">Followed</a></td>
               <td><a class="btn" href="<?php echo site_url("followers")?>">Followers</a></td>
         	</tr>
@@ -71,7 +71,7 @@
               <td><?php echo $tweets_details['followed_count']; ?></td>
               <td><?php echo $tweets_details['followers_count']; ?></td>
             </tr>
-            <?php echo form_open('profil_cnt/new_tweet',array('class' => 'well','name' => 'myform')); ?>
+            <?php echo form_open('profil/new_tweet',array('class' => 'well','name' => 'myform')); ?>
             <tr>
               <td colspan='3'><textarea class="form-control" onkeyup="newTweet()" rows="2" id="new_tweet" placeholder='Yeni Tweet Olustur' name='new_tweet'></textarea></td>
             </tr>

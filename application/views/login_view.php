@@ -15,7 +15,7 @@
  	<div class='bird'><img src='<?php echo base_url('img/twitter_bird.png'); ?>' /></div>
  </div>
 
- <?php echo form_open('login_cnt/check',array('class' => 'well')); ?>
+ <?php echo form_open('login/check',array('class' => 'well')); ?>
 
 <div class="container">
 	<div class="row">
@@ -40,7 +40,7 @@
                   </ul>
                   <div id="myTabContent" class="tab-content">
                     <div class="tab-pane active in" id="login">
-                       <?php echo form_open('login_cnt/check',array('class' => 'well')); ?>
+                       <?php echo form_open('login/check',array('class' => 'well')); ?>
                         <fieldset>
                           <div id="legend">
                             <legend class=""><?php echo $this->lang->line('twitter_login')?></legend>
@@ -73,7 +73,7 @@
                    		 <div id="legend">
                             <legend class="">Kayit Ol</legend>
                          </div>
-                      <?php echo form_open('login_cnt/sign_up',array('class' => 'well', 'id' => 'tab')); ?>
+                      <?php echo form_open('login/sign_up',array('class' => 'well', 'id' => 'tab')); ?>
                       <div class="control-group">
                         <label class="control-label"><b><?php echo $this->lang->line('namesurname')?>:</b></label>
                         <div class="controls">

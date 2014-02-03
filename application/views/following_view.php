@@ -18,7 +18,7 @@
                         <td colspan="3"><b><center><?php echo $username; ?></b></td>
                     </tr>
                     <tr>
-                      <td><a class="btn" href="<?php echo site_url("profil_cnt")?>">Tweets</a></td>
+                      <td><a class="btn" href="<?php echo site_url("profil")?>">Tweets</a></td>
                       <td><a class="btn" href="<?php echo site_url("following")?>">Followed</a></td>
                       <td><a class="btn" href="<?php echo site_url("followers")?>">Followers</a></td>
                     </tr>

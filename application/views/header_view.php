@@ -15,10 +15,10 @@
               <p class="brand"><?php echo $username; ?></p>
               <ul class="nav">
                 <li>
-                  <a href="<?php echo site_url("home_cnt") ?>">Anasayfa</a>
+                  <a href="<?php echo site_url("home") ?>">Anasayfa</a>
                 </li>
                 <li>
-                  <a href="<?php echo site_url("profil_cnt") ?>">Profil</a>
+                  <a href="<?php echo site_url("profil") ?>">Profil</a>
                 </li>
                   
                  <li class="dropdown">
