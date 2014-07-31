@@ -38,17 +38,36 @@
                     <td colspan="3"><b><?php echo $username; ?></b></td>
                 </tr>
                 <?php
-                    foreach($list as $lists):
+                   foreach($list as $lists):
                 ?>
-                <!--
-                        <tr>
-                            <td><?php echo $lists->namesurname; ?></td>
-                            <td> <a href='<?php echo site_url('follow_info/unfollow/'.$lists->user_id.'/'.$user_id); ?>' class='btn btn-info'>Takibi Birak</a></td>
-                        </tr>
-                -->
+                    <tr>
+                      <td>
+                          <?php if($lists->photo===''): ?>
+                            <td><center><img style="height:100%;" src='<?php echo base_url('img/profile.jpg'); ?>' /></td>
+                          <?php else: ?>
+                            <td><center><img style="height:100%;" src='<?php echo base_url('img/profile.jpg'); ?>' /></td>
+                          <?php endif; ?>
+                      </td>
+                      <td><b><?php echo $lists->namesurname; ?></td>
+                      <td>
+
+                          <?php
+                            if($lists->info==0):
+                          ?>
+                              <a href='<?php echo site_url('follow_info/unfollow/'.$lists->user_id.'/'.$user_id); ?>' class='btn btn-warning'><span>Takip Et</span></a>
+                          <?php
+                            else:
+                          ?>
+                              <a href='<?php echo site_url('follow_info/unfollow/'.$lists->user_id.'/'.$user_id); ?>' class='btn btn-info deneme'><span>Takip Ediliyor</span></a>
+                          <?php
+                            endif;
+                          ?>
+
+                      </td>
+                    </tr>
                 <?php
-                    endforeach;
-                ?>
+                   endforeach;
+                ?>,
              </table>  
         </div>
      </div>

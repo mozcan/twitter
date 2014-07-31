@@ -12,7 +12,7 @@ class Followers extends CI_Controller
 		}
 
 		$this->load->model('follow_info_model');
-                $this->load->model('tweets_model');
+        $this->load->model('tweets_model');
 		$this->load->library('form_validation');
 
 	}
