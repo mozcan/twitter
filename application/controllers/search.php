@@ -17,13 +17,6 @@ class search extends CI_Controller
 		$this->load->model('search_model');
 		$this->load->library('form_validation');
 
-		//load language
-		/*
-		$this->lang->load('dashboard');
-		$this->lang->load('dashboard_nav');
-
-		$this->load->helper('language');
-		*/
 	}
 
 	public function index()
@@ -51,5 +44,3 @@ class search extends CI_Controller
 	
 
 }
-/* End of file dashboard.php */
-/* Location: ./application/controllers/dashboard.php */

@@ -13,17 +13,17 @@
 	public function search_model($data)
 	{
 		$arr=array();
-		$this->db->select("username,lastname,user_id");
-		$this->db->from("users_details");
-		$this->db->where('user_id !=',$data['user_id']);
-		$this->db->like("username",$data['search'],'after');
+		$this->db->select("namesurname,id");
+		$this->db->from("users");
+		$this->db->where('id !=',$data['user_id']);
+		$this->db->like("namesurname",$data['search'],'after');
 
 		$query=$this->db->get();
 
 		foreach($query->result() as $row)
 		{
 			$arr[]=$row;
-			$arr[]=$this->_followedControl($row->user_id,$data['user_id']);
+			$arr[]=$this->_followedControl($row->id,$data['user_id']);
 		}
 
 		return $arr;
@@ -33,9 +33,9 @@
 	private function _followedControl($followed_id,$user_id)
 	{
 		$this->db->select("*");
-		$this->db->from("followed");
+		$this->db->from("followers_followed");
 		$this->db->where("followed_id",$followed_id);
-		$this->db->where("user_id",$user_id);
+		$this->db->where("follow_up_id",$user_id);
 
 		$query=$this->db->get();
 

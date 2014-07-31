@@ -7,23 +7,23 @@
         	<div class="well sidebar-nav">
         	 <table class="table table-striped">
         	 	<tr>
-        	 		<td colspan="3"><b><?php echo $username." ".$lastname; ?></b></td>
+        	 		<td colspan="3"><b><?php echo $username; ?></b></td>
         	 	</tr>
             <?php for($i=0;$i<count($search);$i=$i+2) { ?>
         	 	<tr>
-        	 		<td><?php echo $search[$i]->username." ".$search[$i]->lastname; ?></td>
+        	 		<td><?php echo $search[$i]->namesurname; ?></td>
               <td>
                 <?php
                   if($search[$i+1]==1)
                   {
                   ?>
-                    <a href='<?php echo site_url('follow_info/unfollow/'.$search[$i]->user_id.'/'.$user_id.'/'.$post_search); ?>' class='btn btn-info'>Unfollow</a>
+                    <a href='<?php echo site_url('follow_info/unfollow/'.$search[$i]->user_id.'/'.$user_id.'/'.$post_search); ?>' class='btn btn-info'>Takibi Birak</a>
                   <?php
                   }
                   else
                   {
                   ?>
-                     <a href='<?php echo site_url('follow_info/follow/'.$search[$i]->user_id.'/'.$user_id.'/'.$post_search); ?>' class='btn btn-info'>follow</a>
+                     <a href='<?php echo site_url('follow_info/follow/'.$search[$i]->user_id.'/'.$user_id.'/'.$post_search); ?>' class='btn btn-info'>Takip Et</a>
                   <?php
                   }
                 ?>
